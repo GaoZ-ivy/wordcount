@@ -5,6 +5,7 @@ int Word(char path[]){
  FILE *file ;
  file= fopen(path, "r");//打开文件
  int num=0;
+ int codenum=0;
  int sign;//定义状态量
  char word;
  if(file==NULL){
@@ -20,8 +21,11 @@ int Word(char path[]){
         num++;
         sign=0;
     }
+    if(word!=' '&&word!='\n'&&word!='\t'){
+        codenum++;
+    }
    }
-   if(num==0){printf("%d",num);}
+   if(codenum==0){printf("%d",codenum);}
    else{printf("%d",num+1);}//由于无法统计最后一个单词，当文档为空时输出0，当非空时输出+1
    fclose(file);
    return num;
