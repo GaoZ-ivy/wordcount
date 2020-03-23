@@ -1,11 +1,11 @@
 #include<stdio.h>
 #include"head.h"
-//´ÊÊýÍ³¼Æ
+//è¯æ•°ç»Ÿè®¡
 int Word(char path[]){
  FILE *file ;
- file= fopen(path, "r");//´ò¿ªÎÄ¼þ
+ file= fopen(path, "r");//æ‰“å¼€æ–‡ä»¶
  int num=0;
- int sign;//¶¨Òå×´Ì¬Á¿
+ int sign;//å®šä¹‰çŠ¶æ€é‡
  char word;
  if(file==NULL){
   printf("ERROR:file is not exit.");
@@ -13,16 +13,17 @@ int Word(char path[]){
  }
  else{
    while((word=fgetc(file))!=EOF){
-    if((word>='a'&&word<='z')||(word>='A'&&word<='Z')||word=='_'){//µ±×Ö·ûÎª×ÖÄ¸£¬¼´µ±Ç°µ¥´ÊÎ´½áÊø
+    if((word>='a'&&word<='z')||(word>='A'&&word<='Z')||word=='_'){//å½“å­—ç¬¦ä¸ºå­—æ¯ï¼Œå³å½“å‰å•è¯æœªç»“æŸ
         sign=1;
     }
-    else if(sign){//µ±×Ö·û²»Îª×ÖÄ¸Ê±
+    else if(sign){//å½“å­—ç¬¦ä¸ä¸ºå­—æ¯æ—¶
         num++;
         sign=0;
     }
    }
+   if(num==0){printf("%d",num);}
+   else{printf("%d",num+1);}//ç”±äºŽæ— æ³•ç»Ÿè®¡æœ€åŽä¸€ä¸ªå•è¯ï¼Œå½“æ–‡æ¡£ä¸ºç©ºæ—¶è¾“å‡º0ï¼Œå½“éžç©ºæ—¶è¾“å‡º+1
    fclose(file);
-   printf("%d",num+1);
    return num;
  }
 }
